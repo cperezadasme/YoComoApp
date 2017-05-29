@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">YoComoApp</string>
+    <string name="nombre_transicion_imagen">imagen_compartida</string>
+
+</resources>
