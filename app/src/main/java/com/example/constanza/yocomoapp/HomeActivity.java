@@ -11,9 +11,8 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
-public abstract class HomeActivity extends AppCompatActivity
-    implements AdapterView.OnItemClickListener {
-    private GridView gridView;
+public class HomeActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+    //private GridView gridView;
     //private AdapterTipoReceta adaptador;
 
     @Override
@@ -25,12 +24,19 @@ public abstract class HomeActivity extends AppCompatActivity
         gridview.setAdapter(new AdapterTipoReceta(this));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            //insertar funcion onItemClick
+
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 Toast.makeText(HomeActivity.this, "" + position,
                         Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
     /*
     public boolean onCreateOptionsMenu(Menu menu) {
