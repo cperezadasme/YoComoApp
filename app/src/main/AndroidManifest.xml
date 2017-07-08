@@ -20,10 +20,9 @@
         <!-- nombre de todas las activity -->
         <activity
             android:name=".HomeActivity"
-            android:label="Home">
-
-        </activity>
-
+            android:label="Home" />
+        <activity android:name=".RecetasActivity"></activity>
+        <activity android:name=".detalleActivity"></activity>
     </application>
 
 </manifest>

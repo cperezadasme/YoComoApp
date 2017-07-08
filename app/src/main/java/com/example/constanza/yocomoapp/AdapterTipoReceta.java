@@ -15,16 +15,18 @@ import android.widget.TextView;
  */
 
 public class AdapterTipoReceta extends BaseAdapter{
+    private int layout_view;
     private Context context;
 
-
-    public AdapterTipoReceta(Context context){
+    public AdapterTipoReceta(int layout_view, Context context) {
+        this.layout_view = layout_view;
         this.context = context;
     }
 
     public int getCount(){
         return Tipo_Receta.ITEMS.length;
     }
+
     @Override
     public Tipo_Receta getItem(int position) {
         return Tipo_Receta.ITEMS[position];
@@ -37,9 +39,11 @@ public class AdapterTipoReceta extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView;
         if (convertView == null) {
-            // if it's not recycled, initialize some attributes
+            LayoutInflater view = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = view.inflate(layout_view, null);
+        }
+            /*
             imageView = new ImageView(context);
             imageView.setLayoutParams(new GridView.LayoutParams(500, 400));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -49,7 +53,25 @@ public class AdapterTipoReceta extends BaseAdapter{
         }
 
         imageView.setImageResource(ITEMS[position]);
-        return imageView;
+        */
+        onTipoReceta(getItem(position),convertView);
+
+        //return imageView;
+        return convertView;
+    }
+
+    public void onTipoReceta(Object o,View convertView){
+        if (o!=null){
+            ImageView imagen = (ImageView)convertView.findViewById(R.id.imageView_tipo_receta);
+            if (imagen!=null){
+                imagen.setImageResource(((Tipo_Receta)o).getId_imagen());
+            }
+            TextView nombre = (TextView)convertView.findViewById(R.id.textView_nombre_tipo_receta);
+            if (nombre!=null){
+                nombre.setText(((Tipo_Receta)o).getNombre());
+            }
+        }
+
     }
     /* Arreglar
     public View getView(int position, View view, ViewGroup viewGroup) {
@@ -83,9 +105,10 @@ public class AdapterTipoReceta extends BaseAdapter{
             new Tipo_Receta("ensaladas", R.drawable.ensalada),
             new Tipo_Receta("salado", R.drawable.salado),
     };
-    */
+
     private  Integer[] ITEMS = {
             R.drawable.postres, R.drawable.batidos, R.drawable.ensalada, R.drawable.salado
     };
+    */
 
 }
